@@ -3,11 +3,6 @@
 
 #include "button.h"
 
-/* Screen Attributes */
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
-#define SCREEN_BPP 32
-
 /* Frame rate */
 #define FRAME_PER_SECOND 30
 
@@ -15,8 +10,19 @@
 #define PIECE_STAT 4
 
 /* Chess board */
-#define CHESSBOARD_ROW 8
-#define CHESSBOARD_COLUMN 8
+#define CHESSBOARD_ROW 15
+#define CHESSBOARD_COLUMN 15
+#define SUBBOARD_WIDTH 48
+#define SUBBOARD_HEIGHT 48
+
+/* Chess piece */
+#define PIECE_WIDTH 40
+#define PIECE_HEIGHT 40
+
+/* Screen Attributes */
+#define SCREEN_WIDTH CHESSBOARD_COLUMN * SUBBOARD_HEIGHT
+#define SCREEN_HEIGHT CHESSBOARD_COLUMN * SUBBOARD_HEIGHT
+#define SCREEN_BPP 32
 
 /* Declare function protype */
 SDL_Surface *load_image(char *filename);

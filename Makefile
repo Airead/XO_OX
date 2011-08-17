@@ -10,4 +10,4 @@ timer.o : timer.c timer.h
 judgement.o : judgement.c judgement.h xoox.h
 	gcc -g -c judgement.c
 clean :
-	rm *.o *~
+	rm *.o *~ xoox

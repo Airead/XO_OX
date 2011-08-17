@@ -27,7 +27,7 @@ int mouse_to_piece_map(int mouse_map[][CHESSBOARD_COLUMN], int pieces_map[][CHES
 	int i, j;
 	int win = 0;
 	int play_stat;
-	static leader = 1;
+	static leader = 2;
 #if TEST
 	print_array(pieces_map, "mouse to piece map: receive pieces_map");
 #endif
