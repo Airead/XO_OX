@@ -5,6 +5,7 @@
  * @date   2011.08.16 
  */
 
+#include <stdio.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 #include <SDL/SDL_ttf.h>
@@ -12,11 +13,15 @@
 #include "xoox.h"
 #include "button.h"
 #include "timer.h"
+#include "judgement.h"
+
+#define TEST 1
 
 int main(int argc, int *argv[])
 {
 	bool quit = false;	/* quit flag */
 	int i, j;
+	int play_stat = 0;
 	Timer fps;		/* cap frame rate */
 	SDL_Event event;
 	SDL_Surface *mouseover;
@@ -76,9 +81,13 @@ int main(int argc, int *argv[])
 				quit = true;
 			}
 		}
-		mouse_to_piece_map(mouse_map, pieces_map);
+		play_stat = mouse_to_piece_map(mouse_map, pieces_map);
 		subchessboard_show(mouseover, mouseother, mouse_map, screen);
 		pieces_show(piece_stat_img, pieces_map, screen);
+		if(play_stat != 0){
+			printf("play_stat = %d\n", play_stat);		
+			quit = true;
+		}
 
 		/* Update screen */
 		if(SDL_Flip(screen) == -1){
@@ -187,18 +196,4 @@ void subchessboard_show(SDL_Surface *mouseover, SDL_Surface *mouseother, int mou
 	}
 }
 
-void mouse_to_piece_map(int mouse_map[][CHESSBOARD_COLUMN], int pieces_map[][CHESSBOARD_COLUMN])
-{
-	int i, j;
-	for(i = 0; i < CHESSBOARD_ROW; i++){
-		for(j = 0; j < CHESSBOARD_COLUMN; j++){
-			if(mouse_map[i][j] & MOUSECLICK ){
-				if(pieces_map[i][j] == 2){
-					pieces_map[i][j] = -1;
-				}
-				pieces_map[i][j]++;
-				mouse_map[i][j] = 0; /* set mouse map empty */
-			}
-		}
-	}
-}
+

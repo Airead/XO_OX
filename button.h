@@ -1,6 +1,8 @@
 #ifndef BUTTON
 #define BUTTON
 
+#include <stdbool.h>
+
 #define BUTTON_MOUSESTAT 4
 #define BUTTON_MOUSEOUT 0
 #define BUTTON_MOUSEOVER 1
