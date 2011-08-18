@@ -26,7 +26,7 @@ int main(int argc, int *argv[])
 	SDL_Event event;
 	SDL_Surface *mouseover;
 	SDL_Surface *mouseother;
-	SDL_Surface *wintitle[2];
+	SDL_Surface *wintitle[3];
 	SDL_Surface *screen;		 /* main screen */
 	SDL_Surface *chessboard;	 /* chess board */
 	Button pieces[CHESSBOARD_ROW][CHESSBOARD_COLUMN] = {{0}};
@@ -56,6 +56,7 @@ int main(int argc, int *argv[])
 	mouseother = load_image("mouseother.png");
 	wintitle[0] = load_image("wintitle1.png");
 	wintitle[1] = load_image("wintitle2.png");
+	wintitle[2] = load_image("wintitle3.png");
 
 	/* Init timer */
 	timer_init(&fps);
@@ -89,7 +90,7 @@ int main(int argc, int *argv[])
 		pieces_show(piece_stat_img, pieces_map, screen);
 		if(play_stat != 0){
 			printf("play_stat = %d\n", play_stat);
-			apply_surface(210, 300, wintitle[play_stat - 1], screen);
+			apply_surface((SCREEN_WIDTH - wintitle[play_stat - 1]->w) / 2, (SCREEN_HEIGHT - wintitle[play_stat - 1]->h) / 2, wintitle[play_stat - 1], screen);
 		}
 
 		/* Update screen */
