@@ -111,11 +111,13 @@ int main(int argc, int *argv[])
 	SDL_FreeSurface(chessboard);
 	SDL_FreeSurface(mouseover);
 	SDL_FreeSurface(mouseother);
-	for(i = 0; i < PIECE_STAT; i++){
+	for(i = 0; i < 2; i++){
 		SDL_FreeSurface(piece_stat_img[i]);
 	}
-	SDL_FreeSurface(wintitle[0]);
-	SDL_FreeSurface(wintitle[1]);
+	for(i = 0; i < 3; i++){
+		SDL_FreeSurface(wintitle[i]);
+	}
+	
 	SDL_Quit();
 	return 0;
 }
