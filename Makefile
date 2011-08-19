@@ -9,5 +9,15 @@ timer.o : timer.c timer.h
 	gcc -g -c timer.c
 judgement.o : judgement.c judgement.h xoox.h
 	gcc -g -c judgement.c
+
+install: 
+	mkdir /usr/games/xooxres/
+	cp xooxres/*.png /usr/games/xooxres/
+	cp xoox /usr/games/
+
+uninstall:
+	rm /usr/games/xoox
+	rm -r /usr/games/xooxres
+
 clean :
 	rm *.o *~ xoox

@@ -20,8 +20,8 @@
 #define PIECE_HEIGHT 40
 
 /* Screen Attributes */
-#define SCREEN_WIDTH CHESSBOARD_COLUMN * SUBBOARD_HEIGHT
-#define SCREEN_HEIGHT CHESSBOARD_COLUMN * SUBBOARD_HEIGHT
+#define SCREEN_WIDTH CHESSBOARD_ROW * SUBBOARD_WIDTH + 1 /* if not, it will overflow */
+#define SCREEN_HEIGHT CHESSBOARD_COLUMN * SUBBOARD_HEIGHT + 1 
 #define SCREEN_BPP 32
 
 /* Declare function protype */

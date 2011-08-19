@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include <SDL/SDL_ttf.h>
 #include <stdbool.h>
 #include "xoox.h"
 #include "button.h"
@@ -47,16 +46,16 @@ int main(int argc, int *argv[])
 	SDL_WM_SetCaption("XO_OX", NULL);
 	
 	/* Load resource */
-	piece_stat_img[1] = load_image("chess1.png");
-	piece_stat_img[2] = load_image("chess2.png");
-	piece_stat_img[3] = load_image("chess1.png");
-	piece_stat_img[4] = load_image("chess2.png");
-	chessboard = load_image("chessboard.png");
-	mouseover = load_image("mouseover.png");
-	mouseother = load_image("mouseother.png");
-	wintitle[0] = load_image("wintitle1.png");
-	wintitle[1] = load_image("wintitle2.png");
-	wintitle[2] = load_image("wintitle3.png");
+	piece_stat_img[1] = load_image("xooxres/chess1.png");
+	piece_stat_img[2] = load_image("xooxres/chess2.png");
+	piece_stat_img[3] = piece_stat_img[1]; /* for special show, but no time to do */
+	piece_stat_img[4] = piece_stat_img[2]; /* for special show, but no time to do */
+	chessboard = load_image("xooxres/chessboard.png");
+	mouseover = load_image("xooxres/mouseover.png");
+	mouseother = load_image("xooxres/mouseother.png");
+	wintitle[0] = load_image("xooxres/wintitle1.png");
+	wintitle[1] = load_image("xooxres/wintitle2.png");
+	wintitle[2] = load_image("xooxres/wintitle3.png");
 
 	/* Init timer */
 	timer_init(&fps);
