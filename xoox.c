@@ -84,9 +84,13 @@ int main(int argc, int *argv[])
 				quit = true;
 			}
 		}
+		/* logic function */
 		play_stat = mouse_to_piece_map(mouse_map, pieces_map);
+		/* show chessboard */
 		subchessboard_show(mouseover, mouseother, mouse_map, screen);
+		/* show pieces */
 		pieces_show(piece_stat_img, pieces_map, screen);
+		/*  */
 		if(play_stat != 0){
 			printf("play_stat = %d\n", play_stat);
 			apply_surface((SCREEN_WIDTH - wintitle[play_stat - 1]->w) / 2, (SCREEN_HEIGHT - wintitle[play_stat - 1]->h) / 2, wintitle[play_stat - 1], screen);

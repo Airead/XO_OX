@@ -1,5 +1,5 @@
 xoox : xoox.o button.o timer.o judgement.o
-	gcc -g -o xoox  -lm -lSDL -lSDL_image -lSDL_ttf -lSDL_mixer xoox.o button.o timer.o judgement.o
+	gcc -g -o xoox  -lm -lSDL -lSDL_image xoox.o button.o timer.o judgement.o
 
 xoox.o : xoox.c xoox.h
 	gcc -g -c xoox.c
