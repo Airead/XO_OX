@@ -3,7 +3,7 @@
  * @author Airead Fan <fgh1987168@gmail.com>
  * @date   2011.08.15
  * @date   2011.08.16 
- */
+ */   
 
 #include <stdio.h>
 #include <SDL/SDL.h>
@@ -23,7 +23,6 @@ int main(int argc, int *argv[])
 	int play_stat = 0;
 	Timer fps;		/* cap frame rate */
 	SDL_Event event;
-	SDL_Surface *mouseover;
 	SDL_Surface *mouseother;
 	SDL_Surface *wintitle[3];
 	SDL_Surface *screen;		 /* main screen */
@@ -51,7 +50,6 @@ int main(int argc, int *argv[])
 	piece_stat_img[3] = piece_stat_img[1]; /* for special show, but no time to do */
 	piece_stat_img[4] = piece_stat_img[2]; /* for special show, but no time to do */
 	chessboard = load_image("xooxres/chessboard.png");
-	mouseover = load_image("xooxres/mouseover.png");
 	mouseother = load_image("xooxres/mouseother.png");
 	wintitle[0] = load_image("xooxres/wintitle1.png");
 	wintitle[1] = load_image("xooxres/wintitle2.png");
@@ -64,7 +62,7 @@ int main(int argc, int *argv[])
 	for(i = 0; i < CHESSBOARD_ROW; i++){
 		for(j = 0; j < CHESSBOARD_COLUMN; j++){
 			button_init(&pieces[i][j], SUBBOARD_WIDTH  * i, SUBBOARD_HEIGHT  * j, SUBBOARD_WIDTH , SUBBOARD_HEIGHT );
-			button_set_stat_img(&pieces[i][j], BUTTON_MOUSEOVER, mouseover);
+			button_set_stat_img(&pieces[i][j], BUTTON_MOUSEOVER, NULL);
 			button_set_stat_img(&pieces[i][j], BUTTON_MOUSEOUT, mouseother);
 			button_set_stat_img(&pieces[i][j], BUTTON_MOUSEUP, mouseother);
 			button_set_stat_img(&pieces[i][j], BUTTON_MOUSEDOWN, mouseother);
@@ -87,7 +85,7 @@ int main(int argc, int *argv[])
 		/* logic function */
 		play_stat = mouse_to_piece_map(mouse_map, pieces_map);
 		/* show chessboard */
-		subchessboard_show(mouseover, mouseother, mouse_map, screen);
+		subchessboard_show(piece_stat_img[get_leader()], mouseother, mouse_map, screen);
 		/* show pieces */
 		pieces_show(piece_stat_img, pieces_map, screen);
 		/*  */
@@ -113,7 +111,6 @@ int main(int argc, int *argv[])
 
 	/* Free resource */
 	SDL_FreeSurface(chessboard);
-	SDL_FreeSurface(mouseover);
 	SDL_FreeSurface(mouseother);
 	for(i = 0; i < 2; i++){
 		SDL_FreeSurface(piece_stat_img[i]);
@@ -192,7 +189,6 @@ void pieces_show(SDL_Surface *piece_stat_img[], int pieces_map[][CHESSBOARD_COLU
 		}
 	}
 }
-
 /* 
  * show chessboard 
  */
@@ -203,12 +199,10 @@ void subchessboard_show(SDL_Surface *mouseover, SDL_Surface *mouseother, int mou
 	for(i = 0; i < CHESSBOARD_ROW; i++){
 		for(j = 0; j < CHESSBOARD_COLUMN; j++){
 			if(mouse_map[i][j] & MOUSEOVER ){
-				apply_surface(i * SUBBOARD_WIDTH , j * SUBBOARD_HEIGHT , mouseover, screen);
+				apply_surface(i * SUBBOARD_WIDTH + 4, j * SUBBOARD_HEIGHT + 4, mouseover, screen);
 			}else{
 				apply_surface(i * SUBBOARD_WIDTH , j * SUBBOARD_HEIGHT , mouseother, screen);
 			}
 		}
 	}
 }
-
-

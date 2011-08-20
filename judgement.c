@@ -3,7 +3,9 @@
 #include "xoox.h"
 #include "judgement.h"
 
-#define TEST 0
+#define TEST 1
+
+static int leader;
 
 #if TEST
 
@@ -27,7 +29,6 @@ int mouse_to_piece_map(int mouse_map[][CHESSBOARD_COLUMN], int pieces_map[][CHES
 	int i, j;
 	int win = 0;
 	int play_stat;
-	static leader = 2;
 #if TEST
 	print_array(pieces_map, "mouse to piece map: receive pieces_map");
 #endif
@@ -57,9 +58,7 @@ int mouse_to_piece_map(int mouse_map[][CHESSBOARD_COLUMN], int pieces_map[][CHES
 
 
 
-
-
-int judge_win(int win, int pieces[][CHESSBOARD_COLUMN]) /*l 为玩家编号，同时也是玩家棋子编号*/						       	
+int judge_win(int win, int pieces[][CHESSBOARD_COLUMN]) /*l 为玩家编号，同时也是玩家棋子编号*/
 {
 	int i ,j, flag = 0, k = 0;   
 #if TEST
@@ -206,4 +205,7 @@ int judge_win(int win, int pieces[][CHESSBOARD_COLUMN]) /*l 为玩家编号，�
 	return 3;	/*返回为3代表和棋*/
 }
 
-
+int get_leader()
+{
+	return leader % 2 + 1;
+}
