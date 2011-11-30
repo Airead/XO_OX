@@ -1,3 +1,11 @@
+/********************************************************
+ * @author  Airead Fan <fgh1987168@gmail.com>		*
+ * @date    2011 9月 19 21:27:17 CST			*
+ ********************************************************
+ *		after studying C 63 days		*
+ *		after studying APUE 28 days		*
+ ********************************************************/
+
 #include <stdio.h>
 #include <SDL/SDL.h>
 #include "xoox.h"
